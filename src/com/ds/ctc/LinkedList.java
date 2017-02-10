@@ -22,8 +22,10 @@ public class LinkedList {
 		//int data = list.findKthLastElement(n7, 0);
 		//System.out.println(data);
 		
-		list.deletefromMiddle(n4);
-		list.printList(n7);
+//		list.deletefromMiddle(n4);
+//		list.printList(n7);
+		
+		list.partitionList(n7, 6);
 	}
 	
 	//print the complete list
@@ -34,6 +36,7 @@ public class LinkedList {
 				System.out.print(temp.data + " ");
 				temp = temp.next;
 			}
+			System.out.println();
 		}
 	}
 	
@@ -118,5 +121,42 @@ public class LinkedList {
 		//printList(current);
 	}
 	
-	//todo partition a linked list around a value x
+	// solution 1 - partition a linked list around a value x
+	// solution 2 - Add new nodes to head of new lists instead of adding at end to get rid of extra 2 pointers
+	public void partitionList(Node head, int partition) {
+		LinkedList object = new LinkedList();
+		Node smallerHead = null, smaller = null;
+		Node greaterHead = null, greater = null;
+		int data;
+		object.printList(head);
+		while(head != null) {
+			data = head.data;
+			if (data >= partition) {
+				if (greater == null) {
+					greater = head;
+					greaterHead = greater;
+				} else {
+					//Node node = new Node(data, null);
+					greater.next = head;
+					greater = greater.next;
+				}
+			} else {
+				if (smaller == null) {
+					smaller = head;
+					smallerHead = smaller;
+				} else {
+					//Node node = new Node(data, null);
+					smaller.next = head;
+					smaller = smaller.next;
+				}
+			}
+			head = head.next;
+		}
+		//merge the 2 lists
+		smaller.next = greaterHead;
+		object.printList(smallerHead);
+		//object.printList(greaterHead);
+	}
+	
+	
 }
