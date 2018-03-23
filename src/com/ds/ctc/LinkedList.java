@@ -91,7 +91,7 @@ public class LinkedList {
 
 	//remove duplicates USING BUFFER
 	public Node removeDuplicates(Node head) {
-		Map<Integer, Integer> map = new HashMap<>();
+		Map<Character, Integer> map = new HashMap<>();
 		Node current = head;
 		Node previous = head;
 		while(current != null) {
@@ -207,42 +207,42 @@ public class LinkedList {
 		//object.printList(greaterHead);
 	}
 	
-	public Node listAddition(Node head1, Node head2) {
-		Node newHead = null, current = null;
-		if (head1 != null || head2 != null) {
-			int carry = 0, remainder = 0, sum = 0;
-			if (true) {
-				while (head1 != null || head2 != null) {
-					if (head1 == null) {
-						sum = head2.data + carry;
-					} else if (head2 == null) {
-						sum = head1.data + carry;
-					} else {
-						sum = head1.data + head2.data + carry;
-					}
-					carry = 0;
-					if (head1 != null && head2 != null) {
-						if (sum > 9) {
-							carry = sum / 10;
-							remainder = sum % 10;
-							sum = remainder;
-						}
-					}
-					if (newHead == null) {
-						newHead = new Node(sum, null);
-						current = newHead;
-					} else {
-						Node newNode = new Node(sum, null);
-						current.next = newNode;
-						current = newNode;
-					}
-					head1 = head1 == null ? head1 : head1.next;
-					head2 = head2 == null ? head2 : head2.next;
-				}
-			}
-		}	
-		return newHead;
-	}
+//	public Node listAddition(Node head1, Node head2) {
+//		Node newHead = null, current = null;
+//		if (head1 != null || head2 != null) {
+//			int carry = 0, remainder = 0, sum = 0;
+//			if (true) {
+//				while (head1 != null || head2 != null) {
+//					if (head1 == null) {
+//						sum = head2.data + carry;
+//					} else if (head2 == null) {
+//						sum = head1.data + carry;
+//					} else {
+//						sum = head1.data + head2.data + carry;
+//					}
+//					carry = 0;
+//					if (head1 != null && head2 != null) {
+//						if (sum > 9) {
+//							carry = sum / 10;
+//							remainder = sum % 10;
+//							sum = remainder;
+//						}
+//					}
+//					if (newHead == null) {
+//						newHead = new Node(sum, null);
+//						current = newHead;
+//					} else {
+//						Node newNode = new Node(sum, null);
+//						current.next = newNode;
+//						current = newNode;
+//					}
+//					head1 = head1 == null ? head1 : head1.next;
+//					head2 = head2 == null ? head2 : head2.next;
+//				}
+//			}
+//		}
+//		return newHead;
+//	}
 	
 	// detect start of loop in linked list
 	public Node detectLoop(Node head) {
@@ -264,30 +264,30 @@ public class LinkedList {
 		return fast;
 	}
 	
-	public boolean isPalindrome(Node head) {
-		if (head == null) {
-			return false;
-		}
-		if (head.next == null) {
-			return true;
-		}
-		Stack<Integer> stack = new Stack<Integer>();
-		Node fast = head,slow = head;
-		boolean isPalindrome = true;
-		while (fast.next != null) {
-			stack.push(slow.data);
-			slow = slow.next;
-			fast = fast.next.next;
-		}
-		while (slow.next != null) {
-			slow = slow.next;
-			if (stack.pop() != slow.data) {
-				isPalindrome = false;
-				break;
-			}
-		}
-		return isPalindrome;
-	}
+//	public boolean isPalindrome(Node head) {
+//		if (head == null) {
+//			return false;
+//		}
+//		if (head.next == null) {
+//			return true;
+//		}
+//		Stack<Integer> stack = new Stack<Integer>();
+//		Node fast = head,slow = head;
+//		boolean isPalindrome = true;
+//		while (fast.next != null) {
+//			stack.push(slow.data);
+//			slow = slow.next;
+//			fast = fast.next.next;
+//		}
+//		while (slow.next != null) {
+//			slow = slow.next;
+//			if (stack.pop() != slow.data) {
+//				isPalindrome = false;
+//				break;
+//			}
+//		}
+//		return isPalindrome;
+//	}
 	
 	public void mergeContacts(List<List<String>> contacts) {
 //		Map<String, Integer> map = new HashMap<String, Integer>();

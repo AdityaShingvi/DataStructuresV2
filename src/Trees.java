@@ -24,10 +24,38 @@ public class Trees {
         System.out.println(searchBST(bst, 40).data);
 
         inorder(insertInBST(bst, 80));
+
+        System.out.println(isBalancedTree(bt));
+
+        inorder(createBST(new int[]{2, 4, 6, 8, 10, 12}));
     }
 
     public static boolean isBalancedTree(TreeNode root) {
         if (root == null) return true;
+
+        int lht = height(root.left);
+        int rht = height(root.right);
+
+        if (Math.abs(lht - rht) > 1)
+            return false;
+        else
+            return isBalancedTree(root.left)
+            && isBalancedTree(root.right);
+    }
+
+    public static TreeNode createBST(int[] arr) {
+        return createTree(arr, 0, arr.length);
+    }
+
+    public static TreeNode createTree(int[] arr, int lo, int hi) {
+        if (lo < hi) {
+            int mid = (lo + hi) / 2;
+            TreeNode node = new TreeNode(arr[mid], null, null);
+            node.left = createTree(arr, lo, mid);
+            node.right = createTree(arr, mid + 1, hi);
+            return node;
+        }
+        return null;
     }
 
     public static TreeNode insertInBST(TreeNode root, int key) {
